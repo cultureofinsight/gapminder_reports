@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Paul Campbell" />
+
+<meta name="date" content="2018-10-22" />
+
+<title>Asia Report</title>
+
+<script src="libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/pymjs-1.3.2/pym.v1.js"></script>
+<script src="libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Asia Report</h1>
+<h4 class="author"><em>Paul Campbell</em></h4>
+<h4 class="date"><em>22 October 2018</em></h4>
+
+</div>
+
+
+<hr />
+<p>This is an example of a parameterised HTML report produced with <code>rmarkdown</code>. Given a dataset, an <code>rmarkdown</code> script, a list of parameters to pass to it (in this case Continents) and a rendering function, we can batch produce a report for each Continent supplied to the report script.</p>
+<p>The data, script, render function and generated reports are viewable in this <a href="https://github.com/PaulC91/gapminder_reports">github repository</a>.</p>
+<p>For information about automated data reporting wit R, check out this <a href="https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/">blogpost on the Culture of Insight website</a>.</p>
+<div id="linked-interactive-graphics" class="section level2">
+<h2>Linked Interactive Graphics</h2>
+<p>Chart showing latest percentage changes in metrics from year 2002 to 2007.</p>
+<p>Use the search bar to highlight a particular country across all 3 charts or click directly on one of the bars. Double clicking will deselect the highlighted country.</p>
+<div id="htmlwidget-6522cc1e41e0569dad66" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6522cc1e41e0569dad66">{"x":{"url":"Asia_report_2018-10-22_files/figure-html//widgets/widget_linked-charts.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<hr />
+</div>
+<div id="latest-period-figures-2007-changes-2002-2007" class="section level2">
+<h2>Latest Period Figures (2007) &amp; % Changes (2002-2007)</h2>
+<p>Searchable + sortable data table.</p>
+<div id="htmlwidget-c6a4596c8e7da8914641" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-c6a4596c8e7da8914641">{"x":{"filter":"none","data":[["Afghanistan","Bahrain","Bangladesh","Cambodia","China","Hong Kong, China","India","Indonesia","Iran","Iraq","Israel","Japan","Jordan","Korea, Dem. Rep.","Korea, Rep.","Kuwait","Lebanon","Malaysia","Mongolia","Myanmar","Nepal","Oman","Pakistan","Philippines","Saudi Arabia","Singapore","Sri Lanka","Syria","Taiwan","Thailand","Turkey","Vietnam","West Bank and Gaza","Yemen, Rep."],[974.5803384,29796.04834,1391.253792,1713.778686,4959.114854,39724.97867,2452.210407,3540.651564,11605.71449,4471.061906,25523.2771,31656.06806,4519.461171,1593.06548,23348.13973,47306.98978,10461.05868,12451.6558,3095.772271,944,1091.359778,22316.19287,2605.94758,3190.481016,21654.83194,47143.17964,3970.095407,4184.548089,28718.27684,7458.396327,8458.276384,2441.576404,3025.349798,2280.769906],[0.341041240551481,0.273141747212538,0.224274470526824,0.912217071077026,0.58982631553295,0.315004095949482,0.403854642285266,0.23199683642462,0.255926136978547,0.0182987398848054,0.16514876390617,0.106677842867599,0.175437842472297,-0.0326050737732161,0.213900076858631,0.347389558952413,0.123161625917614,0.219916009733239,0.4461229528225,0.545008183306056,0.0323053945522655,0.128514637906088,0.245248763731127,0.203536783691215,0.138856401267106,0.30869282690992,0.316615797508319,0.0228854722159191,0.235969600448798,0.261315710083918,0.299656573453878,0.383755371172539,-0.330005952236509,0.0205605203087719],[43.828,75.635,64.062,59.723,72.961,82.208,64.698,70.65,70.964,59.545,80.745,82.603,72.535,67.297,78.623,77.588,71.993,74.241,66.803,62.069,63.785,75.64,65.483,71.688,72.777,79.972,72.396,74.143,78.4,70.616,71.777,74.249,73.422,62.698],[0.0403285147997818,0.0112306972391203,0.0330414590489091,0.0523505779531998,0.0129532959404675,0.00874900300631933,0.0289285771084145,0.0300635679710738,0.0217851434824553,0.043806752445395,0.0131625175667537,0.0073536585365853,0.0178493748509043,0.00952566679667563,0.0204815367642287,0.0088942057630292,0.0135861913611532,0.0163873829472647,0.0272169513939076,0.0360719770314482,0.0398597978480599,0.0195031876322565,0.0294450558088352,0.0197004395260516,0.016069583670734,0.0152596166053066,0.0223257784367719,0.0149206740311829,0.0183140667619173,0.0299282422262413,0.0131554802738373,0.0168727830505225,0.0145364101146883,0.0396298998474498],["31.89 M","0.71 M","150.45 M","14.13 M","1 318.68 M","6.98 M","1 110.40 M","223.55 M","69.45 M","27.50 M","6.43 M","127.47 M","6.05 M","23.30 M","49.04 M","2.51 M","3.92 M","24.82 M","2.87 M","47.76 M","28.90 M","3.20 M","169.27 M","91.08 M","27.60 M","4.55 M","20.38 M","19.31 M","23.17 M","65.07 M","71.16 M","85.26 M","4.02 M","22.21 M"],[0.26204732748268,0.0794884802946997,0.109036554675958,0.0932295440749141,0.0298993252108716,0.0322272493092767,0.073705093237212,0.0591632711077419,0.03804852365103,0.145731556312239,0.0658674997665655,0.00316474511824149,0.140504421127204,0.048901289715474,0.0224235784874237,0.186590868082902,0.0662078754030964,0.0952645939644869,0.0747477595453502,0.0474559225420035,0.117024144430857,0.181109962107448,0.103433692957406,0.0973816546829856,0.126502630652045,0.0846240961880767,0.0409391062872792,0.125842644365345,0.0320676643728607,0.036005701170836,0.0571947751121515,0.0538166941334103,0.185496247615485,0.187713906075939]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Country<\/th>\n      <th>GDP Per Capita<\/th>\n      <th>+/-<\/th>\n      <th>Life Expectancy<\/th>\n      <th>+/-<\/th>\n      <th>Population<\/th>\n      <th>+/-<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ftip","columnDefs":[{"className":"dt-center","targets":[1,3,5]},{"className":"dt-right","targets":[2,4,6]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 2, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 4, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 6, 0, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 3, 1, 3, ',', '.');\nDTWidget.formatCurrency(this, row, data, 1, '$', 2, 3, ',', '.', true);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<hr />
+</div>
+<div id="static-charts-with-ggplot2" class="section level2">
+<h2>Static Charts with ggplot2</h2>
+<p>Bubble chart visualising all 3 metrics for latest year of data with automated placement of annotations.</p>
+<p><img src="Asia_report_2018-10-22_files/figure-html/unnamed-chunk-7-1.svg" width="2700" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="animated-charts" class="section level2">
+<h2>Animated Charts</h2>
+<p>Add animation to the charts in your reports for greater impact.</p>
+<p><img src="Asia_report_2018-10-22_files/figure-html/unnamed-chunk-9-1.gif" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="learning" class="section level2">
+<h2>Learning</h2>
+<p>Making the switch to doing your data work with R can be daunting, but with the combination of <a href="https://www.rstudio.com/products/RStudio/" target="_blank">RStudio</a> as your ‘integrated development environment’, the <a href="https://www.tidyverse.org/" target="_blank">tidyverse packages</a> for data analysis, and <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown</a> for producing reports in just about any format you’d like (HTML, PDF, Word, PowerPoint, Dashboard, even entire websites like this one!), there has never been a better time to make the leap and start your journey to better data reporting workflows. There’s also a really great and welcoming community of R users online who are always happy to help new users feel at home.</p>
+<p>If you’d like some help getting started, we’re currently running a 1-day ‘Master Data with Code’ workshop where you’ll learn how to import, manipulate, join and transform data using the <code>tidyverse</code> in the RStudio IDE.</p>
+<p>We also offer bespoke in-house training for teams where we focus on your own specific data tasks and how you can use R for greater accuracy and efficiency in data processing, and engagement in your communicated insights.</p>
+<p>For more information get in touch via our <a href="https://cultureofinsight.com/contact/">Contact Page</a>.</p>
+<p>Thanks for reading!</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

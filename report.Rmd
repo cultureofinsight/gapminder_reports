@@ -1,0 +1,242 @@
+---
+params: 
+  continent: 
+title: "`r paste(params$continent, 'Report')`"
+author: Paul Campbell
+description: "Create reproducible reports from data cleaning to visualisation with rmarkdown"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  html_document:
+    theme: yeti
+    highlight: haddock
+---
+
+```{r include=FALSE}
+knitr::opts_chunk$set(fig.width = 9, 
+                      fig.height = 6,
+                      fig.align = "center", 
+                      cache = TRUE,
+                      cache.path = ".cache/",
+                      message=FALSE, 
+                      warning=FALSE, 
+                      echo=FALSE
+                      )
+```
+
+```{r setup, cache=FALSE}
+library(tidyverse)
+library(readxl)
+library(hrbrthemes)
+library(scales)
+library(countrycode)
+library(glue)
+library(plotly)
+library(crosstalk)
+library(DT)
+library(gganimate)
+library(widgetframe)
+
+theme_set(theme_ft_rc())
+```
+
+---
+
+This is an example of a parameterised HTML report produced with `rmarkdown`. Given a dataset, an `rmarkdown` script, a list of parameters to pass to it (in this case Continents) and a rendering function, we can batch produce a report for each Continent supplied to the report script.
+
+The data, script, render function and generated reports are viewable in this [github repository](https://github.com/PaulC91/gapminder_reports).
+
+For information about automated data reporting wit R, check out this [blogpost on the Culture of Insight website](https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/).
+
+
+```{r cache=TRUE}
+path <- "gapminder_messy.xlsx"
+
+combined_data <- 
+  excel_sheets(path) %>% 
+  map_df(~ {
+    read_excel(path, sheet = .x, skip = 4, trim_ws = TRUE) %>% 
+      mutate(year = as.integer(.x))
+  }) %>% 
+  select(country, year, everything())
+```
+
+```{r}
+combined_data <- combined_data %>% 
+  mutate(continent = countrycode(sourcevar = country, origin = "country.name", destination = "continent")) %>% 
+  select(continent, everything())
+```
+
+```{r}
+filtered_data <- combined_data %>% 
+  filter(continent == params$continent)
+
+latest_year <- max(filtered_data$year)
+years <- unique(filtered_data$year)
+n_year <- length(years)
+previous_year <- sort(years, partial=n_year-1)[n_year-1]
+
+```
+
+## Linked Interactive Graphics
+
+Chart showing latest percentage changes in metrics from year `r previous_year ` to `r latest_year`. 
+
+Use the search bar to highlight a particular country across all 3 charts or click directly on one of the bars. Double clicking will deselect the highlighted country.
+
+```{r}
+p_change <- filtered_data %>% 
+  group_by(continent, country) %>% 
+  arrange(year) %>% 
+  mutate(gdpPercap_change = (gdpPercap - lag(gdpPercap)) / lag(gdpPercap),
+         lifeExp_change = (lifeExp - lag(lifeExp)) / lag(lifeExp),
+         pop_change = (pop - lag(pop)) / lag(pop))
+         
+latest_figs <- p_change %>% 
+  filter(year == max(year)) %>%
+  select(-year) %>% 
+  arrange(country) %>% 
+  ungroup()
+
+```
+
+```{r linked-charts, eval=TRUE, echo=FALSE}
+# create a shared data source with the crosstalk package
+sd <- SharedData$new(latest_figs, ~country, group = "Highlight a Country")
+
+# build 3 static ggplot charts with the shared data
+sd_gdp <- ggplot(sd, aes(reorder(country, -gdpPercap_change), gdpPercap_change,
+                               text = glue::glue("{country}, {continent}: {percent(gdpPercap_change)}"))) +
+  geom_col(aes(fill = gdpPercap_change)) +
+  scale_y_percent() +
+  scale_fill_viridis_c(guide = FALSE) +
+  labs(title = "GDP Per Capita % Change", y = "GDP per capita") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        panel.grid.major.x = element_blank())
+
+sd_le <- ggplot(sd, aes(reorder(country, -lifeExp_change), lifeExp_change,
+                               text = glue::glue("{country}, {continent}: {percent(lifeExp_change)}"))) +
+  geom_col(aes(fill = lifeExp_change)) +
+  scale_y_percent() +
+  scale_fill_viridis_c(guide = FALSE) +
+  labs(title = "Life Expectacy % Change", y = "Life Expectancy") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        panel.grid.major.x = element_blank())
+
+sd_pop <- ggplot(sd, aes(reorder(country, -pop_change), pop_change,
+                               text = glue::glue("{country}, {continent}: {percent(pop_change)}"))) +
+  geom_col(aes(fill = pop_change)) +
+  scale_y_percent() +
+  scale_fill_viridis_c(guide = FALSE) +
+  labs(title = "Latest Period % Change", y = "Population") +
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        panel.grid.major.x = element_blank())
+
+# make them interactive with plotly
+sd_gdp_i <- ggplotly(sd_gdp, tooltip = "text")
+sd_le_i <- ggplotly(sd_le, tooltip = "text")
+sd_pop_i <- ggplotly(sd_pop, tooltip = "text")
+
+# arrange them together
+subplot(sd_gdp_i, sd_le_i, sd_pop_i, nrows = 3, titleY = TRUE) %>% 
+  config(collaborate = FALSE, displaylogo = FALSE) %>% 
+  hide_legend() %>% 
+  highlight(selectize = TRUE, on = "plotly_click", off = "plotly_doubleclick") %>% 
+  frameWidget(height = "600px")
+
+```
+
+<br>
+
+---
+
+## Latest Period Figures (`r latest_year`) & % Changes (`r previous_year`-`r latest_year`)
+
+Searchable + sortable data table.
+
+```{r echo=FALSE}
+
+mills <- scales::unit_format(scale = 1e-6, accuracy = .01, unit = "M")
+
+tdat <- latest_figs %>%
+  select(-continent) %>% 
+  select(1:2, 5, 3, 6, 4, 7) %>% 
+  mutate(pop = mills(pop))
+
+DT::datatable(tdat, rownames = FALSE, 
+             colnames = c("Country", "GDP Per Capita", "+/-", "Life Expectancy", "+/-", "Population", "+/-"),
+             options = list(dom = 'ftip',
+                            columnDefs = list(list(className = 'dt-center', targets = c(1,3,5))))
+             ) %>% 
+  formatCurrency(columns = 2) %>% 
+  formatRound(columns = 4, digits = 1) %>% 
+  formatPercentage(columns = c(3,5,7))
+```
+
+---
+
+## Static Charts with ggplot2
+
+Bubble chart visualising all 3 metrics for latest year of data with automated placement of annotations.
+
+```{r echo=FALSE, dpi = 300, dev = "svg"}
+filtered_data %>% 
+  filter(year == max(year)) %>% 
+  ggplot(aes(gdpPercap, lifeExp, label = country)) +
+  geom_point(aes(size = pop), fill = "SteelBlue", colour = "white", alpha = .7, pch = 21) +
+  ggrepel::geom_text_repel(colour = "white", force = 50, segment.colour = "grey", size = 3) +
+  scale_size(range = c(2, 12)) +
+  labs(x = "GDP per capita", y = "Life Expectancy",
+       title = glue("Latest {params$continent} Metrics"), subtitle = glue("Year: {latest_year}"),
+       caption = "@paulcampbell91 | Culture of Insight | Source: Gapminder", size = "Population")
+```
+
+---
+
+## Animated Charts
+
+```{r}
+continent_summary <- 
+  combined_data %>% 
+  group_by(continent, year) %>% 
+  summarise(gdpPercap = weighted.mean(gdpPercap, pop),
+            lifeExp = weighted.mean(lifeExp, pop),
+            pop = sum(pop)) %>% 
+  ungroup() %>% 
+  gather(metric, value, 3:5)
+```
+
+Add animation to the charts in your reports for greater impact. 
+
+```{r echo=FALSE, fig.height=7, eval=TRUE}
+ggplot(continent_summary, aes(year, value, group = continent)) +
+  facet_wrap(~metric, ncol = 1, scales = "free_y") +
+  geom_line(aes(colour = continent)) +
+  geom_segment(aes(xend = 2007, yend = value), linetype = 2, colour = 'grey') + 
+  geom_point(size = 2, colour = "white") + 
+  geom_text(aes(x = 2007.1, label = continent), hjust = 0) + 
+  transition_reveal(continent, year) + 
+  coord_cartesian(clip = 'off') + 
+  labs(title = "Continental Progress", y = NULL, 
+       caption = "@paulcampbell91 | Culture of Insight | Source: Gapminder") +
+  theme(plot.margin = margin(5.5, 40, 5.5, 5.5), legend.position = "none")
+```
+
+---
+
+## Learning
+
+Making the switch to doing your data work with R can be daunting, but with the combination of <a href="https://www.rstudio.com/products/RStudio/" target="_blank">RStudio</a> as your 'integrated development environment', the <a href="https://www.tidyverse.org/" target="_blank">tidyverse packages</a> for data analysis, and <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown</a> for producing reports in just about any format you'd like (HTML, PDF, Word, PowerPoint, Dashboard, even entire websites like this one!), there has never been a better time to make the leap and start your journey to better data reporting workflows. There's also a really great and welcoming community of R users online who are always happy to help new users feel at home.
+
+If you'd like some help getting started, we're currently running a 1-day 'Master Data with Code' workshop where you'll learn how to import, manipulate, join and transform data using the `tidyverse` in the RStudio IDE.
+
+We also offer bespoke in-house training for teams where we focus on your own specific data tasks and how you can use R for greater accuracy and efficiency in data processing, and engagement in your communicated insights.
+
+For more information get in touch via our [Contact Page](https://cultureofinsight.com/contact/).
+
+Thanks for reading!

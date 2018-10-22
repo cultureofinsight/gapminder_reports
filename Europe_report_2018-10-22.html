@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Paul Campbell" />
+
+<meta name="date" content="2018-10-22" />
+
+<title>Europe Report</title>
+
+<script src="libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/pymjs-1.3.2/pym.v1.js"></script>
+<script src="libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Europe Report</h1>
+<h4 class="author"><em>Paul Campbell</em></h4>
+<h4 class="date"><em>22 October 2018</em></h4>
+
+</div>
+
+
+<hr />
+<p>This is an example of a parameterised HTML report produced with <code>rmarkdown</code>. Given a dataset, an <code>rmarkdown</code> script, a list of parameters to pass to it (in this case Continents) and a rendering function, we can batch produce a report for each Continent supplied to the report script.</p>
+<p>The data, script, render function and generated reports are viewable in this <a href="https://github.com/PaulC91/gapminder_reports">github repository</a>.</p>
+<p>For information about automated data reporting wit R, check out this <a href="https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/">blogpost on the Culture of Insight website</a>.</p>
+<div id="linked-interactive-graphics" class="section level2">
+<h2>Linked Interactive Graphics</h2>
+<p>Chart showing latest percentage changes in metrics from year 2002 to 2007.</p>
+<p>Use the search bar to highlight a particular country across all 3 charts or click directly on one of the bars. Double clicking will deselect the highlighted country.</p>
+<div id="htmlwidget-d79a9b73bfe9c6233da3" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d79a9b73bfe9c6233da3">{"x":{"url":"Europe_report_2018-10-22_files/figure-html//widgets/widget_linked-charts.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<hr />
+</div>
+<div id="latest-period-figures-2007-changes-2002-2007" class="section level2">
+<h2>Latest Period Figures (2007) &amp; % Changes (2002-2007)</h2>
+<p>Searchable + sortable data table.</p>
+<div id="htmlwidget-ca55fd5b0790c18e138d" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ca55fd5b0790c18e138d">{"x":{"filter":"none","data":[["Albania","Austria","Belgium","Bosnia and Herzegovina","Bulgaria","Croatia","Czech Republic","Denmark","Finland","France","Germany","Greece","Hungary","Iceland","Ireland","Italy","Montenegro","Netherlands","Norway","Poland","Portugal","Romania","Serbia","Slovak Republic","Slovenia","Spain","Sweden","Switzerland","United Kingdom"],[5937.029526,36126.4927,33692.60508,7446.298803,10680.79282,14619.22272,22833.30851,35278.41874,33207.0844,30470.0167,32170.37442,27538.41188,18008.94444,36180.78919,40675.99635,28569.7197,9253.896111,36797.93332,49357.19017,15389.92468,20509.64777,10808.47561,9786.534714,18678.31435,25768.25759,28821.0637,33859.74835,37506.41907,33203.26128],[0.28947795304228,0.114409583997282,0.105187087777962,0.237137304495231,0.387696670167255,0.257201043313915,0.297626490279564,0.09674408699098,0.177364525735074,0.0533769838134668,0.071067602637058,0.22315449143802,0.213218985437309,0.161010002644799,0.193647838592988,0.0215109917858244,0.411258491517119,0.091125207185995,0.104583687862462,0.282254467472248,0.0269762348064951,0.370701591173158,0.352464474805943,0.369500540538515,0.247252344781927,0.160479820740397,0.153983172604782,0.0877429619399049,0.126336110191399],[76.423,79.829,79.441,74.852,73.005,75.748,76.486,78.332,79.313,80.657,79.406,79.483,73.338,81.757,78.885,80.546,74.543,79.762,80.196,75.563,78.098,72.476,74.002,74.663,77.926,80.941,80.884,81.701,79.425],[0.0102047560508124,0.0107495568498353,0.0143130745658837,0.0102847887704144,0.0119905738841142,0.0116459212564774,0.0129254403390279,0.0149261466701216,0.0120326655608013,0.0134062068099007,0.00935553578238216,0.0156793089347782,0.0103044496487118,0.0156149068322982,0.0141676201740741,0.00381355932203404,0.00759654505886663,0.0156882719979626,0.0144971537001898,0.0119592875318066,0.0104541337818604,0.0161801407700288,0.0107767746165299,0.0116937669376694,0.0165144795199583,0.0145525194284282,0.0105447276361818,0.013408583478045,0.0121573574951255],["3.60 M","8.20 M","10.39 M","4.55 M","7.32 M","4.49 M","10.23 M","5.47 M","5.24 M","61.08 M","82.40 M","10.71 M","9.96 M","0.30 M","4.11 M","58.15 M","0.68 M","16.57 M","4.63 M","38.52 M","10.64 M","22.28 M","10.15 M","5.45 M","2.01 M","40.45 M","9.03 M","7.55 M","60.78 M"],[0.02622507775376,0.00631676843007484,0.00778279998875094,0.092855551522345,-0.0442377827974866,0.0027431254491165,-0.00268625268676457,0.0173827602804476,0.0087465162499261,0.0193388456093517,0.000611106131727816,0.00965940431331487,-0.0126153973401401,0.0482623337846752,0.0592734757956307,0.00381055472941037,-0.0492814795273732,0.0277732259162939,0.0203578761841621,-0.0027891851846022,0.0200279532027771,-0.00572572176538855,0.00382789637087614,0.00692229945294426,-0.00111956418528091,0.007363772487787,0.00858962439309037,0.0262035272286222,0.0144178259099518]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Country<\/th>\n      <th>GDP Per Capita<\/th>\n      <th>+/-<\/th>\n      <th>Life Expectancy<\/th>\n      <th>+/-<\/th>\n      <th>Population<\/th>\n      <th>+/-<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ftip","columnDefs":[{"className":"dt-center","targets":[1,3,5]},{"className":"dt-right","targets":[2,4,6]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 2, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 4, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 6, 0, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 3, 1, 3, ',', '.');\nDTWidget.formatCurrency(this, row, data, 1, '$', 2, 3, ',', '.', true);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<hr />
+</div>
+<div id="static-charts-with-ggplot2" class="section level2">
+<h2>Static Charts with ggplot2</h2>
+<p>Bubble chart visualising all 3 metrics for latest year of data with automated placement of annotations.</p>
+<p><img src="Europe_report_2018-10-22_files/figure-html/unnamed-chunk-7-1.svg" width="2700" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="animated-charts" class="section level2">
+<h2>Animated Charts</h2>
+<p>Add animation to the charts in your reports for greater impact.</p>
+<p><img src="Europe_report_2018-10-22_files/figure-html/unnamed-chunk-9-1.gif" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="learning" class="section level2">
+<h2>Learning</h2>
+<p>Making the switch to doing your data work with R can be daunting, but with the combination of <a href="https://www.rstudio.com/products/RStudio/" target="_blank">RStudio</a> as your ‘integrated development environment’, the <a href="https://www.tidyverse.org/" target="_blank">tidyverse packages</a> for data analysis, and <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown</a> for producing reports in just about any format you’d like (HTML, PDF, Word, PowerPoint, Dashboard, even entire websites like this one!), there has never been a better time to make the leap and start your journey to better data reporting workflows. There’s also a really great and welcoming community of R users online who are always happy to help new users feel at home.</p>
+<p>If you’d like some help getting started, we’re currently running a 1-day ‘Master Data with Code’ workshop where you’ll learn how to import, manipulate, join and transform data using the <code>tidyverse</code> in the RStudio IDE.</p>
+<p>We also offer bespoke in-house training for teams where we focus on your own specific data tasks and how you can use R for greater accuracy and efficiency in data processing, and engagement in your communicated insights.</p>
+<p>For more information get in touch via our <a href="https://cultureofinsight.com/contact/">Contact Page</a>.</p>
+<p>Thanks for reading!</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

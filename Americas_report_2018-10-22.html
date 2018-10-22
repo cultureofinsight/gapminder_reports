@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Paul Campbell" />
+
+<meta name="date" content="2018-10-22" />
+
+<title>Americas Report</title>
+
+<script src="libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/pymjs-1.3.2/pym.v1.js"></script>
+<script src="libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Americas Report</h1>
+<h4 class="author"><em>Paul Campbell</em></h4>
+<h4 class="date"><em>22 October 2018</em></h4>
+
+</div>
+
+
+<hr />
+<p>This is an example of a parameterised HTML report produced with <code>rmarkdown</code>. Given a dataset, an <code>rmarkdown</code> script, a list of parameters to pass to it (in this case Continents) and a rendering function, we can batch produce a report for each Continent supplied to the report script.</p>
+<p>The data, script, render function and generated reports are viewable in this <a href="https://github.com/PaulC91/gapminder_reports">github repository</a>.</p>
+<p>For information about automated data reporting wit R, check out this <a href="https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/">blogpost on the Culture of Insight website</a>.</p>
+<div id="linked-interactive-graphics" class="section level2">
+<h2>Linked Interactive Graphics</h2>
+<p>Chart showing latest percentage changes in metrics from year 2002 to 2007.</p>
+<p>Use the search bar to highlight a particular country across all 3 charts or click directly on one of the bars. Double clicking will deselect the highlighted country.</p>
+<div id="htmlwidget-e745dc42f28fe19040af" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-e745dc42f28fe19040af">{"x":{"url":"Americas_report_2018-10-22_files/figure-html//widgets/widget_linked-charts.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<hr />
+</div>
+<div id="latest-period-figures-2007-changes-2002-2007" class="section level2">
+<h2>Latest Period Figures (2007) &amp; % Changes (2002-2007)</h2>
+<p>Searchable + sortable data table.</p>
+<div id="htmlwidget-d03b6a7db57443157904" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-d03b6a7db57443157904">{"x":{"filter":"none","data":[["Argentina","Bolivia","Brazil","Canada","Chile","Colombia","Costa Rica","Cuba","Dominican Republic","Ecuador","El Salvador","Guatemala","Haiti","Honduras","Jamaica","Mexico","Nicaragua","Panama","Paraguay","Peru","Puerto Rico","Trinidad and Tobago","United States","Uruguay","Venezuela"],[12779.37964,3822.137084,9065.800825,36319.23501,13171.63885,7006.580419,9645.06142,8948.102923,6025.374752,6873.262326,5728.353514,5186.050003,1201.637154,3548.330846,7320.880262,11977.57496,2749.320965,9809.185636,4172.838464,7408.905561,19328.70901,18008.50924,42951.65309,10611.46299,11415.80569],[0.452591672305796,0.119789899323571,0.114938324705713,0.0897198557986907,0.221996751516638,0.217422056564263,0.248802662397176,0.411228754787881,0.32025154184428,0.19057843945479,0.0704064306217014,0.0674514345335029,-0.0541008148672668,0.144723050049161,0.0466212862429969,0.114977078676925,0.111039290835668,0.333488723813362,0.102853521737495,0.253829817714346,0.0250908311026254,0.571340844161004,0.0985892453497871,0.373296264774723,0.326640585177707],[75.32,65.554,72.39,80.653,78.553,72.889,78.782,78.273,72.235,74.994,71.878,70.259,60.916,70.198,72.567,76.195,72.899,75.537,71.752,71.421,78.746,69.819,78.242,76.384,73.747],[0.0131826741996232,0.0261571936195858,0.019491310593471,0.0110693243073839,0.00890059080400716,0.0168382578611087,0.00843541594664813,0.0144508670520231,0.0195915141078663,0.0110687177274749,0.0161732688664575,0.0185711386239092,0.0478008841185475,0.0238168161598483,0.00721751079156656,0.0172625564070384,0.0291236094641143,0.0110424028268552,0.0140908769698255,0.0216719594884559,0.0124456787266321,0.0122216423103689,0.0120553615314966,0.0143014593596877,0.0134815710634087],["40.30 M","9.12 M","190.01 M","33.39 M","16.28 M","44.23 M","4.13 M","11.42 M","9.32 M","13.76 M","6.94 M","12.57 M","8.50 M","7.48 M","2.78 M","108.70 M","5.68 M","3.24 M","6.67 M","28.67 M","3.94 M","1.06 M","301.14 M","3.45 M","26.08 M"],[0.0514152977680981,0.0798114038214195,0.0561180514188618,0.0466384709701517,0.0508287192281677,0.0785043206086427,0.077954405473471,0.0169224206753737,0.0773728423057546,0.0645794356792857,0.0922311019391751,0.124726867734476,0.117666149511853,0.120772111239705,0.0433350008387565,0.0607042196663548,0.102685760294456,0.0840215655953525,0.133003177335134,0.0711752388059278,0.0214749899342057,-0.0410443697405775,0.0468041935552071,0.0250992764084167,0.0739878300388633]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Country<\/th>\n      <th>GDP Per Capita<\/th>\n      <th>+/-<\/th>\n      <th>Life Expectancy<\/th>\n      <th>+/-<\/th>\n      <th>Population<\/th>\n      <th>+/-<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ftip","columnDefs":[{"className":"dt-center","targets":[1,3,5]},{"className":"dt-right","targets":[2,4,6]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 2, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 4, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 6, 0, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 3, 1, 3, ',', '.');\nDTWidget.formatCurrency(this, row, data, 1, '$', 2, 3, ',', '.', true);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<hr />
+</div>
+<div id="static-charts-with-ggplot2" class="section level2">
+<h2>Static Charts with ggplot2</h2>
+<p>Bubble chart visualising all 3 metrics for latest year of data with automated placement of annotations.</p>
+<p><img src="Americas_report_2018-10-22_files/figure-html/unnamed-chunk-7-1.svg" width="2700" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="animated-charts" class="section level2">
+<h2>Animated Charts</h2>
+<p>Add animation to the charts in your reports for greater impact.</p>
+<p><img src="Americas_report_2018-10-22_files/figure-html/unnamed-chunk-9-1.gif" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="learning" class="section level2">
+<h2>Learning</h2>
+<p>Making the switch to doing your data work with R can be daunting, but with the combination of <a href="https://www.rstudio.com/products/RStudio/" target="_blank">RStudio</a> as your ‘integrated development environment’, the <a href="https://www.tidyverse.org/" target="_blank">tidyverse packages</a> for data analysis, and <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown</a> for producing reports in just about any format you’d like (HTML, PDF, Word, PowerPoint, Dashboard, even entire websites like this one!), there has never been a better time to make the leap and start your journey to better data reporting workflows. There’s also a really great and welcoming community of R users online who are always happy to help new users feel at home.</p>
+<p>If you’d like some help getting started, we’re currently running a 1-day ‘Master Data with Code’ workshop where you’ll learn how to import, manipulate, join and transform data using the <code>tidyverse</code> in the RStudio IDE.</p>
+<p>We also offer bespoke in-house training for teams where we focus on your own specific data tasks and how you can use R for greater accuracy and efficiency in data processing, and engagement in your communicated insights.</p>
+<p>For more information get in touch via our <a href="https://cultureofinsight.com/contact/">Contact Page</a>.</p>
+<p>Thanks for reading!</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+<meta name="author" content="Paul Campbell" />
+
+<meta name="date" content="2018-10-22" />
+
+<title>Africa Report</title>
+
+<script src="libs/jquery-1.12.4/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/htmlwidgets-1.2/htmlwidgets.js"></script>
+<script src="libs/pymjs-1.3.2/pym.v1.js"></script>
+<script src="libs/widgetframe-binding-0.3.1/widgetframe.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.4.5/datatables.js"></script>
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.10.16/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.10.16/js/jquery.dataTables.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+</style>
+
+
+
+<div class="container-fluid main-container">
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Africa Report</h1>
+<h4 class="author"><em>Paul Campbell</em></h4>
+<h4 class="date"><em>22 October 2018</em></h4>
+
+</div>
+
+
+<hr />
+<p>This is an example of a parameterised HTML report produced with <code>rmarkdown</code>. Given a dataset, an <code>rmarkdown</code> script, a list of parameters to pass to it (in this case Continents) and a rendering function, we can batch produce a report for each Continent supplied to the report script.</p>
+<p>The data, script, render function and generated reports are viewable in this <a href="https://github.com/PaulC91/gapminder_reports">github repository</a>.</p>
+<p>For information about automated data reporting wit R, check out this <a href="https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/">blogpost on the Culture of Insight website</a>.</p>
+<div id="linked-interactive-graphics" class="section level2">
+<h2>Linked Interactive Graphics</h2>
+<p>Chart showing latest percentage changes in metrics from year 2002 to 2007.</p>
+<p>Use the search bar to highlight a particular country across all 3 charts or click directly on one of the bars. Double clicking will deselect the highlighted country.</p>
+<div id="htmlwidget-ab68e6a2eae867a75feb" style="width:100%;height:600px;" class="widgetframe html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ab68e6a2eae867a75feb">{"x":{"url":"Africa_report_2018-10-22_files/figure-html//widgets/widget_linked-charts.html","options":{"xdomain":"*","allowfullscreen":false,"lazyload":false}},"evals":[],"jsHooks":[]}</script>
+<p><br></p>
+<hr />
+</div>
+<div id="latest-period-figures-2007-changes-2002-2007" class="section level2">
+<h2>Latest Period Figures (2007) &amp; % Changes (2002-2007)</h2>
+<p>Searchable + sortable data table.</p>
+<div id="htmlwidget-9b93376263c0b82c27a8" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-9b93376263c0b82c27a8">{"x":{"filter":"none","data":[["Algeria","Angola","Benin","Botswana","Burkina Faso","Burundi","Cameroon","Central African Republic","Chad","Comoros","Congo, Dem. Rep.","Congo, Rep.","Cote d'Ivoire","Djibouti","Egypt","Equatorial Guinea","Eritrea","Ethiopia","Gabon","Gambia","Ghana","Guinea","Guinea-Bissau","Kenya","Lesotho","Liberia","Libya","Madagascar","Malawi","Mali","Mauritania","Mauritius","Morocco","Mozambique","Namibia","Niger","Nigeria","Reunion","Rwanda","Sao Tome and Principe","Senegal","Sierra Leone","Somalia","South Africa","Sudan","Swaziland","Tanzania","Togo","Tunisia","Uganda","Zambia","Zimbabwe"],[6223.367465,4797.231267,1441.284873,12569.85177,1217.032994,430.0706916,2042.09524,706.016537,1704.063724,986.1478792,277.5518587,3632.557798,1544.750112,2082.481567,5581.180998,12154.08975,641.3695236,690.8055759,13206.48452,752.7497265,1327.60891,942.6542111,579.231743,1463.249282,1569.331442,414.5073415,12057.49928,1044.770126,759.3499101,1042.581557,1803.151496,10956.99112,3820.17523,823.6856205,4811.060429,619.6768924,2013.977305,7670.122558,863.0884639,1598.435089,1712.472136,862.5407561,926.1410683,9269.657808,2602.394995,4513.480643,1107.482182,882.9699438,7092.923025,1056.380121,1271.211593,469.7092981],[0.176875934265511,0.729799594236921,0.0498274030453477,0.142339413184392,0.172879679267563,-0.0365875727654389,0.0558858072199551,-0.0442324154378295,0.473871700426091,-0.0833451529064164,0.150875334139571,0.0426214657714597,-0.0631069014210457,0.0912981568782544,0.173847603717805,0.57773690124246,-0.161991869937953,0.30327511152275,0.0546866510746797,0.139518825178532,0.193909462654436,-0.00309795204833987,0.00612644866747583,0.136491292590507,0.230670032218669,-0.220092017092106,0.264594352743616,0.167814465538147,0.141153483963128,0.0958281171992503,0.141943748570818,0.214499525232719,0.172373916588374,0.299972049276548,0.181403921143223,0.0309485615557835,0.246823666214312,0.214363829179135,0.0985608452085916,0.181319990277974,0.126896814533118,0.233099987133049,0.0499491605099531,0.202142677986417,0.305506770384476,0.093350964936557,0.231802857124571,-0.00366797249600984,0.239394085195845,0.138682986534066,0.186258920234388,-0.301068000804948],[72.301,42.731,56.728,50.728,52.295,49.58,50.43,44.741,50.651,65.152,46.462,55.322,48.328,54.791,71.338,51.579,58.04,52.947,56.735,59.448,60.022,56.007,46.388,54.11,42.592,45.678,73.952,59.443,48.303,54.467,64.164,72.801,71.164,42.082,52.906,56.867,46.859,76.442,46.242,65.528,63.062,42.568,48.159,49.339,58.556,39.613,52.517,58.42,73.923,51.542,42.384,43.487],[0.0184100064794208,0.0421432578104042,0.0426791162739404,0.0877900244456834,0.0324777887462982,0.046875,0.0115131578947368,0.0330885748591484,0.00249381494309757,0.0345857020357609,0.0332695814615488,0.0444024919765906,0.0319439699350872,0.0265677402431941,0.0219465375469157,0.0452095323012078,0.0506879073135409,0.0438048299655003,-0.000458060992582995,0.0242414844678762,0.0268420782509024,0.0434272300469483,0.0194268635724332,0.061146846564167,-0.0448725136232145,0.0439969830640184,0.0167040158378817,0.0376531787871382,0.0731853629274145,0.0511212320043228,0.0307966648995133,0.0117714095116326,0.0222509516627165,-0.0441557261618135,0.0277200411818411,0.0435077803875513,0.00538534157226238,0.00921525137304596,0.0651648123833875,0.01851189828559,0.0237337662337662,0.0379401150882668,0.0483934169278997,-0.0754427058933759,0.0387979208430165,-0.0970161161640338,0.0577229058830638,0.0149232987613141,0.0120615536266805,0.0779913412670194,0.0814176000816473,0.0874740553652256],["33.33 M","12.42 M","8.08 M","1.64 M","14.33 M","8.39 M","17.70 M","4.37 M","10.24 M","0.71 M","64.61 M","3.80 M","18.01 M","0.50 M","80.26 M","0.55 M","4.91 M","76.51 M","1.45 M","1.69 M","22.87 M","9.95 M","1.47 M","35.61 M","2.01 M","3.19 M","6.04 M","19.17 M","13.33 M","12.03 M","3.27 M","1.25 M","33.76 M","19.95 M","2.06 M","12.89 M","135.03 M","0.80 M","8.86 M","0.20 M","12.27 M","6.14 M","9.12 M","44.00 M","42.29 M","1.13 M","38.14 M","5.70 M","10.28 M","29.17 M","11.75 M","12.31 M"],[0.0653966412144644,0.143047564601339,0.149755775348333,0.00538781007969469,0.169370549469852,0.195045119851966,0.11087924234469,0.0793043401787494,0.158794640719922,0.157195360541162,0.166611261438546,0.141737475572993,0.108331550042744,0.109423891859031,0.0948266449135952,0.112128677412651,0.111378264114531,0.12605583159424,0.119727946654517,0.158182451778955,0.113017134994239,0.129430013199637,0.104755193217953,0.134557500241662,-0.0166716175519306,0.134755960863354,0.12448885507075,0.163546347865724,0.127073841208441,0.137201781898524,0.155966471275688,0.0422227517609477,0.0830791205136406,0.0799985709475808,0.0420489688173281,0.157460221144987,0.126186232182987,0.0727343843458368,0.128392194947762,0.171430751531942,0.128560371965615,0.146567739460341,0.176113556661606,-0.00980775323695196,0.140269323260762,0.00247463214509112,0.10249996104791,0.145498493383464,0.0517454704559353,0.17908457801454,0.108554597661283,0.0322456687647565]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>Country<\/th>\n      <th>GDP Per Capita<\/th>\n      <th>+/-<\/th>\n      <th>Life Expectancy<\/th>\n      <th>+/-<\/th>\n      <th>Population<\/th>\n      <th>+/-<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"ftip","columnDefs":[{"className":"dt-center","targets":[1,3,5]},{"className":"dt-right","targets":[2,4,6]}],"order":[],"autoWidth":false,"orderClasses":false,"rowCallback":"function(row, data) {\nDTWidget.formatPercentage(this, row, data, 2, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 4, 0, 3, ',', '.');\nDTWidget.formatPercentage(this, row, data, 6, 0, 3, ',', '.');\nDTWidget.formatRound(this, row, data, 3, 1, 3, ',', '.');\nDTWidget.formatCurrency(this, row, data, 1, '$', 2, 3, ',', '.', true);\n}"}},"evals":["options.rowCallback"],"jsHooks":[]}</script>
+<hr />
+</div>
+<div id="static-charts-with-ggplot2" class="section level2">
+<h2>Static Charts with ggplot2</h2>
+<p>Bubble chart visualising all 3 metrics for latest year of data with automated placement of annotations.</p>
+<p><img src="Africa_report_2018-10-22_files/figure-html/unnamed-chunk-7-1.svg" width="2700" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="animated-charts" class="section level2">
+<h2>Animated Charts</h2>
+<p>Add animation to the charts in your reports for greater impact.</p>
+<p><img src="Africa_report_2018-10-22_files/figure-html/unnamed-chunk-9-1.gif" style="display: block; margin: auto;" /></p>
+<hr />
+</div>
+<div id="learning" class="section level2">
+<h2>Learning</h2>
+<p>Making the switch to doing your data work with R can be daunting, but with the combination of <a href="https://www.rstudio.com/products/RStudio/" target="_blank">RStudio</a> as your ‘integrated development environment’, the <a href="https://www.tidyverse.org/" target="_blank">tidyverse packages</a> for data analysis, and <a href="https://rmarkdown.rstudio.com/" target="_blank">rmarkdown</a> for producing reports in just about any format you’d like (HTML, PDF, Word, PowerPoint, Dashboard, even entire websites like this one!), there has never been a better time to make the leap and start your journey to better data reporting workflows. There’s also a really great and welcoming community of R users online who are always happy to help new users feel at home.</p>
+<p>If you’d like some help getting started, we’re currently running a 1-day ‘Master Data with Code’ workshop where you’ll learn how to import, manipulate, join and transform data using the <code>tidyverse</code> in the RStudio IDE.</p>
+<p>We also offer bespoke in-house training for teams where we focus on your own specific data tasks and how you can use R for greater accuracy and efficiency in data processing, and engagement in your communicated insights.</p>
+<p>For more information get in touch via our <a href="https://cultureofinsight.com/contact/">Contact Page</a>.</p>
+<p>Thanks for reading!</p>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
