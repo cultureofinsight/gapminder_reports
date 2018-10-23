@@ -1,5 +1,3 @@
-# Gapminder Reports
-
 The reports below are an example of automating the generation of multiple parameterised reports with `rmarkdown` detailed in [this blogpost](https://www.cultureofinsight.com/blog/2018/10/22/2018-08-20-automated-data-reports-with-r/).
 
 The report script can be found [here](https://github.com/PaulC91/gapminder_reports/blob/master/report.Rmd) and the script to render all reports [here](https://github.com/PaulC91/gapminder_reports/blob/master/render_reports.R).
